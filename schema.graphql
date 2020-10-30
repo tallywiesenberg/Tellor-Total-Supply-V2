@@ -1,0 +1,6 @@
+type totalSupply @entity {
+  id: ID!
+  timestamp: String! #to be converted to string
+  blockNumber: BigInt!
+  totalSupply: BigInt!
+}
