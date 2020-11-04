@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: Tellor
@@ -16,14 +16,14 @@ dataSources:
         - Supply
       abis:
         - name: Tellor
-          file: ./abis/Tellor.json
+          file: Tellor\abis\Tellor.json
         - name: Abi
-          file: ./abis/abi.json
+          file: Tellor\abis\abi.json
         - name: TellorDispute
-          file: ./abis/TellorDispute.json
+          file: Tellor\abis\TellorDispute.json
         - name: TellorGetters
-          file: ./abis/TellorGetters.json
+          file: Tellor\abis\TellorGetters.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,uint256)
           handler: handleTransfer
-      file: ./src/mapping.ts
+      file: Tellor\Tellor.wasm

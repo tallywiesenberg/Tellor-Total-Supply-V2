@@ -28,7 +28,7 @@ export class NewTellorAddress__Params {
   }
 }
 
-export class TellorCore__getVariablesOnDeckResult {
+export class Tellor__getVariablesOnDeckResult {
   value0: BigInt;
   value1: BigInt;
   value2: string;
@@ -48,7 +48,7 @@ export class TellorCore__getVariablesOnDeckResult {
   }
 }
 
-export class TellorCore__getLastNewValueByIdResult {
+export class Tellor__getLastNewValueByIdResult {
   value0: BigInt;
   value1: boolean;
 
@@ -65,7 +65,7 @@ export class TellorCore__getLastNewValueByIdResult {
   }
 }
 
-export class TellorCore__getStakerInfoResult {
+export class Tellor__getStakerInfoResult {
   value0: BigInt;
   value1: BigInt;
 
@@ -82,7 +82,7 @@ export class TellorCore__getStakerInfoResult {
   }
 }
 
-export class TellorCore__getCurrentVariablesResult {
+export class Tellor__getCurrentVariablesResult {
   value0: Bytes;
   value1: BigInt;
   value2: BigInt;
@@ -118,7 +118,7 @@ export class TellorCore__getCurrentVariablesResult {
   }
 }
 
-export class TellorCore__getAllDisputeVarsResult {
+export class Tellor__getAllDisputeVarsResult {
   value0: Bytes;
   value1: boolean;
   value2: boolean;
@@ -166,7 +166,7 @@ export class TellorCore__getAllDisputeVarsResult {
   }
 }
 
-export class TellorCore__getRequestVarsResult {
+export class Tellor__getRequestVarsResult {
   value0: string;
   value1: string;
   value2: Bytes;
@@ -202,7 +202,7 @@ export class TellorCore__getRequestVarsResult {
   }
 }
 
-export class TellorCore__getLastNewValueResult {
+export class Tellor__getLastNewValueResult {
   value0: BigInt;
   value1: boolean;
 
@@ -219,9 +219,9 @@ export class TellorCore__getLastNewValueResult {
   }
 }
 
-export class TellorCore extends ethereum.SmartContract {
-  static bind(address: Address): TellorCore {
-    return new TellorCore("TellorCore", address);
+export class Tellor extends ethereum.SmartContract {
+  static bind(address: Address): Tellor {
+    return new Tellor("Tellor", address);
   }
 
   getRequestIdByTimestamp(_timestamp: BigInt): BigInt {
@@ -350,14 +350,14 @@ export class TellorCore extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(value[0].toBigInt());
   }
 
-  getVariablesOnDeck(): TellorCore__getVariablesOnDeckResult {
+  getVariablesOnDeck(): Tellor__getVariablesOnDeckResult {
     let result = super.call(
       "getVariablesOnDeck",
       "getVariablesOnDeck():(uint256,uint256,string)",
       []
     );
 
-    return new TellorCore__getVariablesOnDeckResult(
+    return new Tellor__getVariablesOnDeckResult(
       result[0].toBigInt(),
       result[1].toBigInt(),
       result[2].toString()
@@ -365,7 +365,7 @@ export class TellorCore extends ethereum.SmartContract {
   }
 
   try_getVariablesOnDeck(): ethereum.CallResult<
-    TellorCore__getVariablesOnDeckResult
+    Tellor__getVariablesOnDeckResult
   > {
     let result = super.tryCall(
       "getVariablesOnDeck",
@@ -377,7 +377,7 @@ export class TellorCore extends ethereum.SmartContract {
     }
     let value = result.value;
     return ethereum.CallResult.fromValue(
-      new TellorCore__getVariablesOnDeckResult(
+      new Tellor__getVariablesOnDeckResult(
         value[0].toBigInt(),
         value[1].toBigInt(),
         value[2].toString()
@@ -408,16 +408,14 @@ export class TellorCore extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(value[0].toBigInt());
   }
 
-  getLastNewValueById(
-    _requestId: BigInt
-  ): TellorCore__getLastNewValueByIdResult {
+  getLastNewValueById(_requestId: BigInt): Tellor__getLastNewValueByIdResult {
     let result = super.call(
       "getLastNewValueById",
       "getLastNewValueById(uint256):(uint256,bool)",
       [ethereum.Value.fromUnsignedBigInt(_requestId)]
     );
 
-    return new TellorCore__getLastNewValueByIdResult(
+    return new Tellor__getLastNewValueByIdResult(
       result[0].toBigInt(),
       result[1].toBoolean()
     );
@@ -425,7 +423,7 @@ export class TellorCore extends ethereum.SmartContract {
 
   try_getLastNewValueById(
     _requestId: BigInt
-  ): ethereum.CallResult<TellorCore__getLastNewValueByIdResult> {
+  ): ethereum.CallResult<Tellor__getLastNewValueByIdResult> {
     let result = super.tryCall(
       "getLastNewValueById",
       "getLastNewValueById(uint256):(uint256,bool)",
@@ -436,7 +434,7 @@ export class TellorCore extends ethereum.SmartContract {
     }
     let value = result.value;
     return ethereum.CallResult.fromValue(
-      new TellorCore__getLastNewValueByIdResult(
+      new Tellor__getLastNewValueByIdResult(
         value[0].toBigInt(),
         value[1].toBoolean()
       )
@@ -652,14 +650,14 @@ export class TellorCore extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(value[0].toBigInt());
   }
 
-  getStakerInfo(_staker: Address): TellorCore__getStakerInfoResult {
+  getStakerInfo(_staker: Address): Tellor__getStakerInfoResult {
     let result = super.call(
       "getStakerInfo",
       "getStakerInfo(address):(uint256,uint256)",
       [ethereum.Value.fromAddress(_staker)]
     );
 
-    return new TellorCore__getStakerInfoResult(
+    return new Tellor__getStakerInfoResult(
       result[0].toBigInt(),
       result[1].toBigInt()
     );
@@ -667,7 +665,7 @@ export class TellorCore extends ethereum.SmartContract {
 
   try_getStakerInfo(
     _staker: Address
-  ): ethereum.CallResult<TellorCore__getStakerInfoResult> {
+  ): ethereum.CallResult<Tellor__getStakerInfoResult> {
     let result = super.tryCall(
       "getStakerInfo",
       "getStakerInfo(address):(uint256,uint256)",
@@ -678,10 +676,7 @@ export class TellorCore extends ethereum.SmartContract {
     }
     let value = result.value;
     return ethereum.CallResult.fromValue(
-      new TellorCore__getStakerInfoResult(
-        value[0].toBigInt(),
-        value[1].toBigInt()
-      )
+      new Tellor__getStakerInfoResult(value[0].toBigInt(), value[1].toBigInt())
     );
   }
 
@@ -813,14 +808,14 @@ export class TellorCore extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(value[0].toBoolean());
   }
 
-  getCurrentVariables(): TellorCore__getCurrentVariablesResult {
+  getCurrentVariables(): Tellor__getCurrentVariablesResult {
     let result = super.call(
       "getCurrentVariables",
       "getCurrentVariables():(bytes32,uint256,uint256,string,uint256,uint256)",
       []
     );
 
-    return new TellorCore__getCurrentVariablesResult(
+    return new Tellor__getCurrentVariablesResult(
       result[0].toBytes(),
       result[1].toBigInt(),
       result[2].toBigInt(),
@@ -831,7 +826,7 @@ export class TellorCore extends ethereum.SmartContract {
   }
 
   try_getCurrentVariables(): ethereum.CallResult<
-    TellorCore__getCurrentVariablesResult
+    Tellor__getCurrentVariablesResult
   > {
     let result = super.tryCall(
       "getCurrentVariables",
@@ -843,7 +838,7 @@ export class TellorCore extends ethereum.SmartContract {
     }
     let value = result.value;
     return ethereum.CallResult.fromValue(
-      new TellorCore__getCurrentVariablesResult(
+      new Tellor__getCurrentVariablesResult(
         value[0].toBytes(),
         value[1].toBigInt(),
         value[2].toBigInt(),
@@ -878,14 +873,14 @@ export class TellorCore extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(value[0].toBoolean());
   }
 
-  getAllDisputeVars(_disputeId: BigInt): TellorCore__getAllDisputeVarsResult {
+  getAllDisputeVars(_disputeId: BigInt): Tellor__getAllDisputeVarsResult {
     let result = super.call(
       "getAllDisputeVars",
       "getAllDisputeVars(uint256):(bytes32,bool,bool,bool,address,address,address,uint256[9],int256)",
       [ethereum.Value.fromUnsignedBigInt(_disputeId)]
     );
 
-    return new TellorCore__getAllDisputeVarsResult(
+    return new Tellor__getAllDisputeVarsResult(
       result[0].toBytes(),
       result[1].toBoolean(),
       result[2].toBoolean(),
@@ -900,7 +895,7 @@ export class TellorCore extends ethereum.SmartContract {
 
   try_getAllDisputeVars(
     _disputeId: BigInt
-  ): ethereum.CallResult<TellorCore__getAllDisputeVarsResult> {
+  ): ethereum.CallResult<Tellor__getAllDisputeVarsResult> {
     let result = super.tryCall(
       "getAllDisputeVars",
       "getAllDisputeVars(uint256):(bytes32,bool,bool,bool,address,address,address,uint256[9],int256)",
@@ -911,7 +906,7 @@ export class TellorCore extends ethereum.SmartContract {
     }
     let value = result.value;
     return ethereum.CallResult.fromValue(
-      new TellorCore__getAllDisputeVarsResult(
+      new Tellor__getAllDisputeVarsResult(
         value[0].toBytes(),
         value[1].toBoolean(),
         value[2].toBoolean(),
@@ -1057,14 +1052,14 @@ export class TellorCore extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(value[0].toBigInt());
   }
 
-  getRequestVars(_requestId: BigInt): TellorCore__getRequestVarsResult {
+  getRequestVars(_requestId: BigInt): Tellor__getRequestVarsResult {
     let result = super.call(
       "getRequestVars",
       "getRequestVars(uint256):(string,string,bytes32,uint256,uint256,uint256)",
       [ethereum.Value.fromUnsignedBigInt(_requestId)]
     );
 
-    return new TellorCore__getRequestVarsResult(
+    return new Tellor__getRequestVarsResult(
       result[0].toString(),
       result[1].toString(),
       result[2].toBytes(),
@@ -1076,7 +1071,7 @@ export class TellorCore extends ethereum.SmartContract {
 
   try_getRequestVars(
     _requestId: BigInt
-  ): ethereum.CallResult<TellorCore__getRequestVarsResult> {
+  ): ethereum.CallResult<Tellor__getRequestVarsResult> {
     let result = super.tryCall(
       "getRequestVars",
       "getRequestVars(uint256):(string,string,bytes32,uint256,uint256,uint256)",
@@ -1087,7 +1082,7 @@ export class TellorCore extends ethereum.SmartContract {
     }
     let value = result.value;
     return ethereum.CallResult.fromValue(
-      new TellorCore__getRequestVarsResult(
+      new Tellor__getRequestVarsResult(
         value[0].toString(),
         value[1].toString(),
         value[2].toBytes(),
@@ -1098,22 +1093,20 @@ export class TellorCore extends ethereum.SmartContract {
     );
   }
 
-  getLastNewValue(): TellorCore__getLastNewValueResult {
+  getLastNewValue(): Tellor__getLastNewValueResult {
     let result = super.call(
       "getLastNewValue",
       "getLastNewValue():(uint256,bool)",
       []
     );
 
-    return new TellorCore__getLastNewValueResult(
+    return new Tellor__getLastNewValueResult(
       result[0].toBigInt(),
       result[1].toBoolean()
     );
   }
 
-  try_getLastNewValue(): ethereum.CallResult<
-    TellorCore__getLastNewValueResult
-  > {
+  try_getLastNewValue(): ethereum.CallResult<Tellor__getLastNewValueResult> {
     let result = super.tryCall(
       "getLastNewValue",
       "getLastNewValue():(uint256,bool)",
@@ -1124,7 +1117,7 @@ export class TellorCore extends ethereum.SmartContract {
     }
     let value = result.value;
     return ethereum.CallResult.fromValue(
-      new TellorCore__getLastNewValueResult(
+      new Tellor__getLastNewValueResult(
         value[0].toBigInt(),
         value[1].toBoolean()
       )

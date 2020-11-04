@@ -12,7 +12,7 @@ import {
   BigDecimal
 } from "@graphprotocol/graph-ts";
 
-export class totalSupply extends Entity {
+export class TotalSupply extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -20,17 +20,17 @@ export class totalSupply extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save totalSupply entity without an ID");
+    assert(id !== null, "Cannot save TotalSupply entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save totalSupply entity with non-string ID. " +
+      "Cannot save TotalSupply entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("totalSupply", id.toString(), this);
+    store.set("TotalSupply", id.toString(), this);
   }
 
-  static load(id: string): totalSupply | null {
-    return store.get("totalSupply", id) as totalSupply | null;
+  static load(id: string): TotalSupply | null {
+    return store.get("TotalSupply", id) as TotalSupply | null;
   }
 
   get id(): string {
@@ -67,5 +67,72 @@ export class totalSupply extends Entity {
 
   set totalSupply(value: BigInt) {
     this.set("totalSupply", Value.fromBigInt(value));
+  }
+}
+
+export class Tip extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save Tip entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save Tip entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("Tip", id.toString(), this);
+  }
+
+  static load(id: string): Tip | null {
+    return store.get("Tip", id) as Tip | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get timestamp(): string {
+    let value = this.get("timestamp");
+    return value.toString();
+  }
+
+  set timestamp(value: string) {
+    this.set("timestamp", Value.fromString(value));
+  }
+
+  get blockNumber(): BigInt {
+    let value = this.get("blockNumber");
+    return value.toBigInt();
+  }
+
+  set blockNumber(value: BigInt) {
+    this.set("blockNumber", Value.fromBigInt(value));
+  }
+
+  get requestId(): BigInt {
+    let value = this.get("requestId");
+    return value.toBigInt();
+  }
+
+  set requestId(value: BigInt) {
+    this.set("requestId", Value.fromBigInt(value));
+  }
+
+  get tip(): BigInt {
+    let value = this.get("tip");
+    return value.toBigInt();
+  }
+
+  set tip(value: BigInt) {
+    this.set("tip", Value.fromBigInt(value));
   }
 }
